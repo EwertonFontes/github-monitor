@@ -16,5 +16,6 @@ export const createRepository = (values, headers, formDispatch) => axios.post('/
     formDispatch(reset('repoCreate'));
   }).catch((error) => {
     const err = error.response;
+    alert(err.data)
     console.log(err);
   });
