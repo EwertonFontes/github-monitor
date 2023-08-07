@@ -11,6 +11,7 @@ class RepositorySerializer(serializers.ModelSerializer):
 
 class CommitSerializer(serializers.ModelSerializer):
     repository = serializers.StringRelatedField(many=False)
+    repository = serializers.PrimaryKeyRelatedField(queryset=Repository.objects.all())
 
     class Meta:
         model = Commit

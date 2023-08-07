@@ -7,5 +7,5 @@ app_name = 'repositories'
 urlpatterns = [
     path('api/commits/', commit_list_view, name='commits-list'),
     path('api/repositories/', repository_create_view, name='repositories-create'),
-    path('api/repositories/', repository_list_view, name='repositories-list'),
+    path('api/repositories/all', repository_list_view, name='repositories-list'),
 ]
