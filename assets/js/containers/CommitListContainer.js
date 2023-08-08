@@ -10,15 +10,20 @@ class CommitListContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== this.props) {
-      console.log(this.props.match.params.repoID)
+    if (
+      prevProps.match.params.repoID !== this.props.match.params.repoID || 
+      prevProps.match.params.author !== this.props.match.params.author
+    ) {
       if (this.props.match.params.repoID) {
+        console.log(this.props.match.params.repoID)
         commitAPI.getCommitsByRepository(this.props.match.params.repoID)
       }
       else if (this.props.match.params.author) {
+        console.log(this.props.match.params.author)
         commitAPI.getCommitsByAuthors(this.props.match.params.author)
       }
       else {
+        console.log('all commits')
         commitAPI.getCommits();
       }
     } 

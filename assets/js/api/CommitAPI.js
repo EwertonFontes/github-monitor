@@ -10,7 +10,7 @@ export const getCommits = () => axios.get(`/api/commits/`)
     store.dispatch(getCommitsSuccess({...response.data}));
   });
 
-export const getCommitsByAuthors = (author_name) => axios.get(`/api/commits?authors=${author_name}`)
+export const getCommitsByAuthors = (author_name) => axios.get(`/api/commits?author=${author_name}`)
   .then((response) => {
     store.dispatch(getCommitsSuccess({...response.data}));
   });
