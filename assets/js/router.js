@@ -5,6 +5,7 @@ import {
 import CommitListContainer from './containers/CommitListContainer';
 import RepoCreateContainer from './containers/RepoCreateContainer';
 import RepositoriesListContainer from './containers/RepositoriesListContainer';
+import CommitListByRepoContainer from './containers/CommitListByRepoContainer';
 
 export default (
     <Router>
@@ -26,6 +27,8 @@ export default (
                     <RepoCreateContainer />
                     <Switch>
                         <Route path="/" exact component={CommitListContainer} />
+                        <Route path='/repository/:repoID' name='repository' component={CommitListContainer} />
+                        <Route path='/commits/:author' name='author' component={CommitListContainer} />
                     </Switch>
                 </div>
             </div>

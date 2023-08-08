@@ -6,7 +6,22 @@ import CommitList from '../components/CommitList';
 
 class CommitListContainer extends React.Component {
   componentDidMount() {
-    commitAPI.getCommits();
+      commitAPI.getCommits();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props) {
+      console.log(this.props.match.params.repoID)
+      if (this.props.match.params.repoID) {
+        commitAPI.getCommitsByRepository(this.props.match.params.repoID)
+      }
+      else if (this.props.match.params.author) {
+        commitAPI.getCommitsByAuthors(this.props.match.params.author)
+      }
+      else {
+        commitAPI.getCommits();
+      }
+    } 
   }
 
   render() {

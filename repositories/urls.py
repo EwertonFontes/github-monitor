@@ -1,7 +1,8 @@
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.urls import path
-from .views import RepositoryList
 from repositories.presentation.commit_list import CommitList
+from repositories.presentation.repository_list import RepositoryList
+
 
 app_name = 'repositories'
 

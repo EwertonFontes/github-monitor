@@ -10,9 +10,19 @@ export const getCommits = () => axios.get(`/api/commits/`)
     store.dispatch(getCommitsSuccess({...response.data}));
   });
 
+export const getCommitsByAuthors = (author_name) => axios.get(`/api/commits?authors=${author_name}`)
+  .then((response) => {
+    store.dispatch(getCommitsSuccess({...response.data}));
+  });
+
+export const getCommitsByRepository = (repo_id) => axios.get(`/api/commits?repository=${repo_id}`)
+  .then((response) => {
+    store.dispatch(getCommitsSuccess({...response.data}));
+  });
+
 export const getRepositories = () => axios.get(`/api/repositories/`)
   .then((response) => {
-    store.dispatch(getRepositoriesSuccess({...response.data['results']}));
+    store.dispatch(getRepositoriesSuccess({...response.data}));
   });
 
 export const createRepository = (values, headers, formDispatch) => axios.post('/api/repositories/', values, {headers})

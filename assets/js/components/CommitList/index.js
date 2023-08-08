@@ -16,14 +16,16 @@ const CommitList = (props) => {
               {commits.map((commit, index) => (
                 <div key={commit.sha}>
                   <div className="avatar">
-                    <img alt={commit.author} className="img-author" src={commit.avatar} />
+                    <Link to={`/commits/${commit.author}`}>
+                      <img alt={commit.author} className="img-author" src={commit.avatar} />
+                    </Link>
                   </div>
                   <div className="commit-details">
                     <p>
                       {commit.message}
                     </p>
                     <small className="text-muted">
-                      {commit.author}
+                      <Link to={`/commits/${commit.author}`}>{commit.author}</Link>
                       {' '}
                       authored
                       {' '}
