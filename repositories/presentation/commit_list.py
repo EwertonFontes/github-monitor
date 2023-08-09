@@ -19,13 +19,16 @@ class CommitList(APIView):
             commits = Commit.objects.all()
             commits_filter = CommitFilter(request.GET, queryset=commits)
 
-            paginator = Paginator(commits_filter.qs, per_page=10)
+            paginator = Paginator(commits_filter.qs, per_page=1)
             page_number = request.GET.get('page')
             if not page_number:
                 page_number = 1
 
             commit_page = paginator.page(page_number)  
             serializer = CommitSerializer(commit_page.object_list, many=True)
-            return Response(serializer.data)
+            return Response(data={
+                'results': serializer.data,
+                'total_pages': paginator.num_pages
+            }, status=status.HTTP_200_OK)
         except (EmptyPage, InvalidPage) as exc:
             return Response('Pagina invalida ou não encontrada', status=status.HTTP_404_NOT_FOUND)

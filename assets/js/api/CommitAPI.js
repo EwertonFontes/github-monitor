@@ -5,18 +5,21 @@ import {
   createRepositorySuccess, createRepositoryNotFound, getCommitsSuccess, getRepositoriesSuccess
 } from '../actions/CommitActions';
 
-export const getCommits = () => axios.get(`/api/commits/`)
-  .then((response) => {
+export const getCommits = (page) => axios.get(
+    `/api/commits?page=${page}`
+  ).then((response) => {
     store.dispatch(getCommitsSuccess({...response.data}));
   });
 
-export const getCommitsByAuthors = (author_name) => axios.get(`/api/commits?author=${author_name}`)
-  .then((response) => {
+export const getCommitsByAuthors = (page, author_name) => axios.get(
+    `/api/commits?author=${author_name}&page=${page}`
+  ).then((response) => {
     store.dispatch(getCommitsSuccess({...response.data}));
   });
 
-export const getCommitsByRepository = (repo_id) => axios.get(`/api/commits?repository=${repo_id}`)
-  .then((response) => {
+export const getCommitsByRepository = (page, repo_id) => axios.get(
+  `/api/commits?repository=${repo_id}&page=${page}`
+  ).then((response) => {
     store.dispatch(getCommitsSuccess({...response.data}));
   });
 

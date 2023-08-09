@@ -5,7 +5,6 @@ import {
 import CommitListContainer from './containers/CommitListContainer';
 import RepoCreateContainer from './containers/RepoCreateContainer';
 import RepositoriesListContainer from './containers/RepositoriesListContainer';
-import CommitListByRepoContainer from './containers/CommitListByRepoContainer';
 
 export default (
     <Router>
