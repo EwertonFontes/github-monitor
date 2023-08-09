@@ -9,8 +9,6 @@ class GithubRepository:
         self,
     ):
         self.base_url = 'https://api.github.com'
-        self.token = getenv('GITHUB_TOKEN')
-        self.headers = {'Authorization': ''}
 
     def is_valid_repo(self, user: str, repository: str) -> bool:
         response = requests.get(url=f"{self.base_url}/users/{user}/repos")

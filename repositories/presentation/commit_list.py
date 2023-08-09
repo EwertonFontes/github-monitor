@@ -19,7 +19,7 @@ class CommitList(APIView):
             commits = Commit.objects.all()
             commits_filter = CommitFilter(request.GET, queryset=commits)
 
-            paginator = Paginator(commits_filter.qs, per_page=1)
+            paginator = Paginator(commits_filter.qs, per_page=10)
             page_number = request.GET.get('page')
             if not page_number:
                 page_number = 1
